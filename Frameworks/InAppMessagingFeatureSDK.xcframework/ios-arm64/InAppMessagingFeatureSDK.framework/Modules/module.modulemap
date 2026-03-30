@@ -1,0 +1,11 @@
+framework module InAppMessagingFeatureSDK {
+  umbrella header "InAppMessagingFeatureSDK.h"
+  export *
+
+  module * { export * }
+}
+
+module InAppMessagingFeatureSDK.Swift {
+  header "InAppMessagingFeatureSDK-Swift.h"
+  requires objc
+}

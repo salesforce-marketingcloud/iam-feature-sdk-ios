@@ -1,0 +1,92 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.2.3 effective-5.10 (swiftlang-6.2.3.3.21 clang-1700.6.3.2)
+// swift-module-flags: -target arm64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name InAppMessagingFeatureSDK
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2.3
+import CoreData
+import DeveloperToolsSupport
+import Foundation
+@_exported import InAppMessagingFeatureSDK
+import SFMCSDK
+import Swift
+import SwiftUI
+import UIKit
+import UserNotifications
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@_hasMissingDesignatedInitializers @objc(SFInAppMessagingFeatureConfig) public class InAppMessagingFeatureConfig : ObjectiveC.NSObject, SFMCSDK.ModuleConfig {
+  @objc final public let trackScreens: Swift.Bool
+  final public let notificationAuthorizationOptions: UserNotifications.UNAuthorizationOptions
+  weak final public let eventDelegate: (any SFMCSDK.InAppMessageEventDelegate)?
+  weak final public let urlHandlingDelegate: (any SFMCSDK.URLHandlingDelegate)?
+  final public let fontName: Swift.String?
+  @objc final public let name: SFMCSDK.ModuleName
+  @objc final public let appId: Swift.String
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(SFInAppMessagingFeatureConfigBuilder) public class InAppMessagingFeatureConfigBuilder : ObjectiveC.NSObject {
+  @discardableResult
+  @objc public func setNotificationAuthorizationOptions(_ options: UserNotifications.UNAuthorizationOptions) -> InAppMessagingFeatureSDK.InAppMessagingFeatureConfigBuilder
+  @discardableResult
+  @objc public func setEventDelegate(_ delegate: any SFMCSDK.InAppMessageEventDelegate) -> InAppMessagingFeatureSDK.InAppMessagingFeatureConfigBuilder
+  @discardableResult
+  @objc public func setURLHandlingDelegate(_ delegate: any SFMCSDK.URLHandlingDelegate) -> InAppMessagingFeatureSDK.InAppMessagingFeatureConfigBuilder
+  @discardableResult
+  @objc public func setInAppMessageFont(name: Swift.String) -> InAppMessagingFeatureSDK.InAppMessagingFeatureConfigBuilder
+  @discardableResult
+  @objc public func build() -> InAppMessagingFeatureSDK.InAppMessagingFeatureConfig
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(SFInAppMessagingFeatureApi) public protocol InAppMessagingFeatureApi {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc func setEventDelegate(_ delegate: (any SFMCSDK.InAppMessageEventDelegate)?)
+  #endif
+  @objc func showInAppMessage(messageId: Swift.String)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @discardableResult
+  @objc func setInAppMessageFont(name: Swift.String?) -> Swift.Bool
+  #endif
+  @objc func setURLHandlingDelegate(_ delegate: any SFMCSDK.URLHandlingDelegate)
+}
+@_inheritsConvenienceInitializers @objc(SFInAppMessagingFeature) final public class InAppMessagingFeature : ObjectiveC.NSObject, SFMCSDK.SFMCModule {
+  @objc final public var name: SFMCSDK.ModuleName
+  @objc public static var moduleVersion: Swift.String
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static var stateProperties: [Swift.String : Swift.String]? {
+    @objc get
+    @objc set
+  }
+  #endif
+  @objc public static let logger: SFMCSDK.ModuleLogger
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func initModule(config: any SFMCSDK.ModuleConfig, components: SFMCSDK.SFMCSdkComponents) -> (any SFMCSDK.SFMCModule)?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func requestSdk(_ callback: @escaping (_ inappMessagingFeature: (any InAppMessagingFeatureSDK.InAppMessagingFeatureApi)?) -> Swift.Void)
+  #endif
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension InAppMessagingFeatureSDK.InAppMessagingFeature : InAppMessagingFeatureSDK.InAppMessagingFeatureApi {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func setEventDelegate(_ delegate: (any SFMCSDK.InAppMessageEventDelegate)?)
+  #endif
+  @objc final public func showInAppMessage(messageId: Swift.String)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func setInAppMessageFont(name: Swift.String?) -> Swift.Bool
+  #endif
+  @objc final public func setURLHandlingDelegate(_ delegate: any SFMCSDK.URLHandlingDelegate)
+}
+extension InAppMessagingFeatureSDK.InAppMessagingFeature : SFMCSDK.Subscriber {
+  @objc final public func receive(message: SFMCSDK.Message)
+}
+extension InAppMessagingFeatureSDK.InAppMessagingFeature : SFMCSDK.InAppMessagingFeatureProtocol {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc final public func getIdentity() -> (any SFMCSDK.ModuleIdentity)?
+  #endif
+  @_spi(PrivateTearDown) @objc final public func internalTearDown()
+}
+extension InAppMessagingFeatureSDK.InAppMessagingFeature {
+  @_spi(PrivateTearDown) @objc public static func tearDownModule()
+}
